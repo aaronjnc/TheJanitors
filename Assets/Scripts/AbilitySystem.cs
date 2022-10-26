@@ -16,5 +16,6 @@ public class AbilitySystem : MonoBehaviour
     void PerformAbility(CallbackContext ctx)
     {
         GameObject newObj = Instantiate(spawnObjects[0]);
+        
     }
 }
