@@ -11,11 +11,17 @@ public class AbilitySystem : MonoBehaviour
     void Start()
     {
         controls.PlayerMovement.Ability.performed += PerformAbility;
+        controls.PlayerMovement.Ability.Enable();
     }
 
     void PerformAbility(CallbackContext ctx)
     {
+        int x = Mathf.RoundToInt(transform.position.x);
+        int z = Mathf.RoundToInt(transform.position.z);
+        Vector3 SpawnPos = new Vector3(x, transform.position.y, z);
+        Vector3 dir = Vector3.zero;
         GameObject newObj = Instantiate(spawnObjects[0]);
+        newObj.transform.position = SpawnPos + dir;
         
     }
 }
