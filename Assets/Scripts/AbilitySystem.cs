@@ -7,26 +7,33 @@ public class AbilitySystem : MonoBehaviour
 {
     InputController controls;
     PlayerMovement movement;
-    List<GameObject> spawnObjects;
+    [SerializeField]
+    GameObject WetSpot;
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
         controls = new InputController();
-        controls.PlayerMovement.Ability.performed += PerformAbility;
+        controls.PlayerMovement.Ability.performed += WetFloor;
         controls.PlayerMovement.Ability.Enable();
     }
 
-    void PerformAbility(CallbackContext ctx)
+    void WetFloor(CallbackContext ctx)
+    {
+        SpawnObject(WetSpot);
+    }
+
+    void SpawnObject(GameObject hazard)
     {
         int x = Mathf.RoundToInt(transform.position.x);
         int z = Mathf.RoundToInt(transform.position.z);
         Vector3 SpawnPos = new Vector3(x, transform.position.y, z);
-        Vector3 dir = movement.GetDir().normalized;
+        Vector2 dir = movement.GetDir().normalized;
         dir.x = Mathf.CeilToInt(dir.x);
-        dir.z = Mathf.CeilToInt(dir.y);
-        GameObject newObj = Instantiate(spawnObjects[0]);
-        newObj.transform.position = SpawnPos + dir;
-        
+        dir.y = Mathf.CeilToInt(dir.y);
+        if (dir == Vector2.zero)
+            dir = Vector2.up;
+        GameObject newObj = Instantiate(hazard);
+        newObj.transform.position = SpawnPos + new Vector3(dir.x, 0, dir.y);
     }
 }

@@ -35,4 +35,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
     }
+
+    public Vector2 GetDir()
+    {
+        return dir;
+    }
 }
