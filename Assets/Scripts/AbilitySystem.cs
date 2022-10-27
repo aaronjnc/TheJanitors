@@ -34,6 +34,6 @@ public class AbilitySystem : MonoBehaviour
         if (dir == Vector2.zero)
             dir = Vector2.up;
         GameObject newObj = Instantiate(hazard);
-        newObj.transform.position = SpawnPos + new Vector3(dir.x, 0, dir.y);
+        newObj.transform.position = SpawnPos + new Vector3(dir.x, .5f, dir.y);
     }
 }
