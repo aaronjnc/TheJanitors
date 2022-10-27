@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     InputController controls;
     Rigidbody rb;
+    Vector2 dir;
 
     [SerializeField]
     private float speed;
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(CallbackContext ctx)
     {
-        Vector2 dir = speed * ctx.ReadValue<Vector2>().normalized;
+        dir = speed * ctx.ReadValue<Vector2>().normalized;
         rb.velocity = new Vector3(dir.x, 0, dir.y);
     }
 
@@ -51,5 +52,10 @@ public class PlayerMovement : MonoBehaviour
             hudOverlay.SetActive(false);
         }
 
+    }
+
+    public Vector2 GetDir()
+    {
+        return dir;
     }
 }
