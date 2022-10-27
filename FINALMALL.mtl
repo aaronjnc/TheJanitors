@@ -1,0 +1,8 @@
+# Wavefront material file
+# Created with Visionworkplace.com product
+newmtl Default_Wall
+Kd 0.5019608 0.5019608 0.5019608
+d 1
+newmtl Default_material
+Kd 0.5882353 0.5882353 0.5882353
+d 1
