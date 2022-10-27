@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIHandler : MonoBehaviour
@@ -39,40 +40,60 @@ public class UIHandler : MonoBehaviour
         SetReputation(value + reputation);
     }
 
-    float GetReputation()
+    public float GetReputation()
     {
         return reputation;
     }
 
-    void SetPoints(int amount)
+    public void SetPoints(int amount)
     {
         points = amount;
         pointDisplay.text = "" + points;
     }
 
-    void AddPoints(int amount)
+    public void AddPoints(int amount)
     {
         points += amount;
         pointDisplay.text = "" + points;
     }
 
-    int GetPoints()
+    public int GetPoints()
     {
         return points;
     }
-    void TogglePause(CallbackContext ctx)
+    public void TogglePause(CallbackContext ctx)
     {
-        if (pauseOverlay.activeInHierarchy)
-        {
-            Debug.Log("toggling");
-            pauseOverlay.SetActive(false);
-            hudOverlay.SetActive(true);
-        }
-        else
-        {
-            pauseOverlay.SetActive(true);
-            hudOverlay.SetActive(false);
-        }
+        pauseOverlay.SetActive(!pauseOverlay.activeInHierarchy);
+        
+        /*
+            if (pauseOverlay.activeInHierarchy)
+            {
+                Debug.Log("toggling");
+                pauseOverlay.SetActive(false);
+                //hudOverlay.SetActive(true);
+            }
+            else
+            {
+                pauseOverlay.SetActive(true);
+                //hudOverlay.SetActive(false);
+            }
+        */
 
+    }
+
+    //Wrapper function for ease of use for calling from a button
+    public void ResumeButton()
+    {
+        TogglePause(new CallbackContext());
+    }
+
+    public void MainMenuButton()
+    {
+        Debug.Log("Set Scene to Main here!");
+    }
+
+    public void SettingButton()
+    {
+        Debug.Log("Show Settings Prefab");
     }
 }
