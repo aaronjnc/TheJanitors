@@ -9,6 +9,14 @@ public class AbilitySystem : MonoBehaviour
     PlayerMovement movement;
     [SerializeField]
     GameObject WetSpot;
+    //0 - Up
+    //1 - Down
+    //2 - Right
+    //3 - Left
+    [SerializeField]
+    RuntimeAnimatorController[] Controllers;
+    [SerializeField]
+    Animator mopAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +41,23 @@ public class AbilitySystem : MonoBehaviour
         dir.y = Mathf.CeilToInt(dir.y);
         if (dir == Vector2.zero)
             dir = Vector2.up;
+        if (dir.y == 1)
+        {
+            mopAnimator.runtimeAnimatorController = Controllers[0];
+        }
+        else if (dir.y == -1)
+        {
+            mopAnimator.runtimeAnimatorController = Controllers[1];
+        }
+        else if (dir.x == 1)
+        {
+            mopAnimator.runtimeAnimatorController = Controllers[2];
+        }
+        else
+        {
+            mopAnimator.runtimeAnimatorController = Controllers[3];
+        }
+        mopAnimator.Play();
         GameObject newObj = Instantiate(hazard);
         newObj.transform.position = SpawnPos + new Vector3(dir.x, 0, dir.y);
     }
