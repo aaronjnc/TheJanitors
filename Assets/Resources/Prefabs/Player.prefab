@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5698466990994265042}
   - component: {fileID: 422701045057292723}
-  - component: {fileID: 8163592125922192363}
   - component: {fileID: 2808479639523355287}
   m_Layer: 0
   m_Name: Mop
@@ -170,25 +169,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &8163592125922192363
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8085622661394147854}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: af4a84ca2c8610a40a9c195194559dca, type: 2}
-  - {fileID: 7400000, guid: 2f7ae9acbf6e4494f80e2933c57afe9a, type: 2}
-  - {fileID: 7400000, guid: 0b485b3905266e146962a404b26851f5, type: 2}
-  - {fileID: 7400000, guid: 18341ee5e05f30a4ab11378b3e899d10, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &2808479639523355287
 Animator:
   serializedVersion: 4
@@ -199,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 8085622661394147854}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e219b889bd3920478d0bc9b7aa785f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -297,11 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WetSpot: {fileID: 8679295016272545168, guid: f607ee9d4c9d00f40b257bee30bd94e5, type: 3}
-  RightAnim: {fileID: 7400000, guid: 0b485b3905266e146962a404b26851f5, type: 2}
-  LeftAnim: {fileID: 7400000, guid: 2f7ae9acbf6e4494f80e2933c57afe9a, type: 2}
-  UpAnim: {fileID: 7400000, guid: 18341ee5e05f30a4ab11378b3e899d10, type: 2}
-  DownAnim: {fileID: 7400000, guid: af4a84ca2c8610a40a9c195194559dca, type: 2}
-  mop: {fileID: 8163592125922192363}
+  Controllers:
+  - {fileID: 9100000, guid: 0e219b889bd3920478d0bc9b7aa785f7, type: 2}
+  mopAnimator: {fileID: 2808479639523355287}
 --- !u!1 &8529981080551923207
 GameObject:
   m_ObjectHideFlags: 0
