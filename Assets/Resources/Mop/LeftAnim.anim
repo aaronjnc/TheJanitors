@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: LeftAnim
   serializedVersion: 6
-  m_Legacy: 1
+  m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -41,8 +41,21 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 1821630242, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
+    - {fileID: 825139413, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
+    - {fileID: -1753019380, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
+    - {fileID: 324681539, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
+    - {fileID: 1102622314, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
+    - {fileID: -1797273473, guid: 91321ed23edf7d9489d4cdf9ab77d7f7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
