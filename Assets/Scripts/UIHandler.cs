@@ -38,7 +38,7 @@ public class UIHandler : MonoBehaviour
     {
         reputation = Mathf.Clamp(value, 0, 100);
         sliderBar.value = reputation;
-        if (reputation == 0)
+        if (reputation <= 0)
         {
             EndGame();
         }
