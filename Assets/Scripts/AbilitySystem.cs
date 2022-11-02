@@ -66,6 +66,7 @@ public class AbilitySystem : MonoBehaviour
             if (ac.animationClips[i].name == state + "Anim")
             {
                 length = ac.animationClips[i].length;
+                break;
             }
         }
         IEnumerator coroutine = MopTime(hazard, new Vector3(dir.x, 0, dir.y), length);
@@ -78,7 +79,7 @@ public class AbilitySystem : MonoBehaviour
         mop.SetActive(false);
         int x = Mathf.RoundToInt(transform.position.x);
         int z = Mathf.RoundToInt(transform.position.z);
-        Vector3 SpawnPos = new Vector3(x, transform.position.y, z);
+        Vector3 SpawnPos = new Vector3(x, transform.position.y - .5f, z);
         GameObject newObj = Instantiate(hazard);
         newObj.transform.position = SpawnPos + dir;
     }
