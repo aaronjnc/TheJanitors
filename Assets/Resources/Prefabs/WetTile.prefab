@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5254089015956925475}
   - component: {fileID: 6152446784235040463}
   - component: {fileID: -6681027082814424667}
+  - component: {fileID: 8754093042177891688}
   m_Layer: 0
   m_Name: WetTile
   m_TagString: Untagged
@@ -152,3 +153,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b822d5885061fdc419c6d2ab867376ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &8754093042177891688
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679295016272545168}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1

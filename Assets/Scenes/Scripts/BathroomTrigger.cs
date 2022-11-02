@@ -10,8 +10,9 @@ public class BathroomTrigger : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            anim = gameObject.GetComponent<Animation>();
-            anim["falling"].layer = 123;
+            other.GetComponent<AINavigator>().Escape();
+            //anim = gameObject.GetComponent<Animation>();
+            //anim["falling"].layer = 123;
         }
     }
     void DestroyObjectDelayed()

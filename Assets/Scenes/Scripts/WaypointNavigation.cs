@@ -26,6 +26,7 @@ public class WaypointNavigation : MonoBehaviour
         controller.SetDestination(currentWaypoint.GetPosition());
 
         agent = GetComponent<NavMeshAgent>();
+
     }
 
     void Update()
@@ -40,9 +41,18 @@ public class WaypointNavigation : MonoBehaviour
                 shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.branchRatio ? true : false;
             }
             
-            if (shouldBranch)
+            if (currentWaypoint.branches.Count > 0)
             {
-                currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint.branches.Count - 1)];
+                int rand = Random.Range(0, currentWaypoint.branches.Count - 1);
+                Waypoint newWayPoint = currentWaypoint.branches[rand];
+                if (newWayPoint.transform.position == currentWaypoint.transform.position)
+                {
+                    rand++;
+                    if (rand == currentWaypoint.branches.Count)
+                        rand = 0;
+                    newWayPoint = currentWaypoint.branches[rand];
+                }
+                currentWaypoint = newWayPoint;
             }
             else
             {

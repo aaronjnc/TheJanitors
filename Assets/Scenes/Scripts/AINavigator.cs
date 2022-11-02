@@ -15,9 +15,15 @@ public class AINavigator : MonoBehaviour
     private Vector3 lastPosition;
     Vector3 velocity;
 
+    UIHandler UIHandler;
+
+    [SerializeField]
+    bool enemy;
+
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        UIHandler = GameObject.Find("UIHandler").GetComponent<UIHandler>();
+        //animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -47,16 +53,58 @@ public class AINavigator : MonoBehaviour
             var fwdDotProduct = Vector3.Dot(transform.forward, velocity);
             var rightDotProduct = Vector3.Dot(transform.right, velocity);
 
-            animator.SetFloat("Horizontal", rightDotProduct);
-            animator.SetFloat("Forward", fwdDotProduct);
+            //animator.SetFloat("Horizontal", rightDotProduct);
+            //animator.SetFloat("Forward", fwdDotProduct);
         }
 
         lastPosition = transform.position;
         
     }
+
     public void SetDestination(Vector3 destination)
     {
         this.destination = destination;
         reachedDestination = false;
+    }
+
+    public void Escape()
+    {
+        if (enemy)
+        {
+            UIHandler?.RemoveAlien();
+            Destroy(gameObject);
+        }
+    }
+
+    public void PlayDeathAnim()
+    {
+        animator.SetTrigger("Fall");
+        float length = 0;
+        RuntimeAnimatorController ac = animator.runtimeAnimatorController;
+        for (int i = 0; i < ac.animationClips.Length; i++)
+        {
+            if (ac.animationClips[i].name.Contains("Fall"))
+            {
+                length = ac.animationClips[i].length;
+                break;
+            }
+        }
+        StartCoroutine(Death(length));
+    }
+
+    IEnumerator Death(float length)
+    {
+        yield return new WaitForSeconds(length);
+        if (enemy)
+        {
+            UIHandler?.AddReputation(10);
+            UIHandler?.AddPoints(20);
+            UIHandler?.RemoveAlien();
+        }
+        else
+        {
+            UIHandler?.AddReputation(-5);
+        }
+        Destroy(gameObject);
     }
 }

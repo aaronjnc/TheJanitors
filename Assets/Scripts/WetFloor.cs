@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WetFloor : MonoBehaviour
@@ -9,6 +10,16 @@ public class WetFloor : MonoBehaviour
     void Start()
     {
         StartCoroutine("AliveTime");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        AINavigator ai = other.gameObject.GetComponent<AINavigator>();
+        if (ai != null)
+        {
+            ai.PlayDeathAnim();
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator AliveTime()
